@@ -4,13 +4,15 @@ This lab is a introduction to the Apache Spark framework for Data Parallel proce
 distributed environments.
 We will be using it in the context of the Python programming language via the _pyspark_ module.
 
-## Requirements
+## Setup Requirements and Installation
 
 A Python (virtual) environment that includes the pyspark module.
 
-* Python distribution (> 3.7)
-* Java version 17 (you may try other versions, but it is not sure that it will work)
-* PySpark. You may install it through _pip_
+You have to install:
+* a Python distribution (> 3.7)
+* (recommended) a Python IDE
+* Java version 17. You may try with other versions, but it is not sure that it will work.
+* PySpark. You may install it through _pip_ on your environment.
 ```
 pip install pyspark
 ```
