@@ -47,16 +47,28 @@ challenges → 1
 
 You have three implementations to test and understand:
 
-* sequential_word_count.py: Sequential Python implementation
-* spark/rdd_word_count.py: PySpark implementation with the base RDD API.
-* spark/sql_word_count.py: PySpark implementation with the SQL API.
-* data: Data files
+* word_count/sequential_word_count.py: Sequential Python implementation
+* word_count/rdd_word_count.py: PySpark implementation with the base RDD API.
+* word_count/sql_word_count.py: PySpark implementation with the SQL API.
+* word_count.ipynb: Jupyter notebook with the code of the three versions.
 
 ## Work To Do
 
+Analyze the code on the _flights/flights_ Jupyter notebook.
+Implement functions to compute
+• The number of flights per route
+• The route with more flights
+• The average duration of flight per route
+
+You may do it directly on the notebook or on dedicated script files, 
+and call them from  the notebook with command:
+```
+% run script
+```
 
 ## Documentation
 
 * Spark: https://spark.apache.org/docs/latest/
 * Spark RDD Programming Guide: https://spark.apache.org/docs/latest/rdd-programming-guide.html
-* A simple Spark Tutorial: https://www.tutorialspoint.com/apache_spark/index.htm
+* Spark SQL Programming Guide: https://spark.apache.org/docs/latest/sql-programming-guide.html
+* A simple Spark Tutorial: https://www.tutorialspoint.com/spark_sql/index.htm
