@@ -58,9 +58,9 @@ You have three implementations to test and understand:
 
 Analyze the code on the _flights/flights_ Jupyter notebook.
 Implement functions to compute
-• The number of flights per route
-• The route with more flights
-• The average duration of flight per route
+- The number of flights per route
+- The route with more flights
+- The average duration of flight per route
 
 You may do it directly on the notebook or on dedicated script files, 
 and call them from  the notebook with command:
