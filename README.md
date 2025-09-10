@@ -52,7 +52,7 @@ You have three implementations to test and understand:
 * word_count/sequential_word_count.py: Sequential Python implementation
 * word_count/rdd_word_count.py: PySpark implementation with the base RDD API.
 * word_count/sql_word_count.py: PySpark implementation with the SQL API.
-* word_count.ipynb: Jupyter notebook with the code of the three versions.
+* word_count/word_count.ipynb: Jupyter notebook with the code of the three versions.
 
 ## Work To Do
 
