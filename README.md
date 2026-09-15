@@ -1,76 +1,102 @@
 # Distributed Data Parallel Computing with Spark
 
-This lab is a introduction to the Apache Spark framework for Data Parallel processing on
-distributed environments.
-We will be using it in the context of the Python programming language via the _pyspark_ module.
+This lab is an **introduction to the Apache Spark framework** for Data Parallel processing on distributed environments. We will be using it in the context of the Python programming language via the `pyspark` module.
 
-## Setup Requirements and Installation
+---
 
-A Python (virtual) environment that includes the pyspark module.
+## 🛠️ Setup Requirements and Installation
+
+### Docker-based Installation
+
+Please read the setup guide previously provided. Now we need to update the Docker Compose file to include the volumes for this lab.
+
+You may either simply copy the Docker files of the previous project into this one (which will create new images that take up extra space on your disk) or update the existing container mappings. 
+
+For the latter option, find your `docker-spark-env` folder and edit the `docker-compose.yml` file to add the new volumes:
+
+```yaml
+services:
+  spark:
+    # ...
+    volumes:
+      # ...
+      - PATH_TO_THIS_PROJECT/apps:/apps/lab01
+      - PATH_TO_THIS_PROJECT/data:/data/lab01
+      
+  jupyter:
+    # ...
+    volumes:
+      # ...
+      - PATH_TO_THIS_PROJECT/notebooks:/workspace/lab01
+      - PATH_TO_THIS_PROJECT/data:/data/lab01
+```
+
+Where `PATH_TO_THIS_PROJECT` is either:
+- The absolute path to the root folder of this project.
+- The relative path from `docker-spark-env` to the root folder of this project.
+
+Now, let's rebuild and run the environment:
+
+```bash
+cd /PATH_TO/docker-spark-env
+docker compose up -d --scale spark-worker=3 --build
+```
+
+### Local Installation
+
+If you prefer, you can also set up a local Python virtual environment that includes the `pyspark` module.
 
 You have to install:
-* a Python distribution (> 3.7)
-* (recommended) a Python IDE
-* Java version 17. You may try with other versions, but it is not sure that it will work.
-* PySpark. You may install it through _pip_ on your environment.
-```
+* A **Python distribution** (> 3.7)
+* A **Python IDE** (e.g., VS Code or PyCharm)
+* **Java Development Kit (JDK)** version 17 (highly recommended for compatibility)
+* **PySpark** via pip:
+
+```bash
 pip install pyspark
 ```
 
-## Word Count Example 
+---
 
-Word counting is a fundamental text analysis process that calculates 
-the total number of words in a given text. It’s widely used for 
-monitoring document length and analyzing word frequency. 
-It is also a common example of data processing, especially in 
-distributed computing systems.
+## 📝 Word Count Example
 
-The process typically involves reading the input text, splitting it 
-into words, and counting how many times each word appears.
+Word counting is a fundamental text analysis process that calculates the total number of words in a given text. It is widely used for monitoring document length and analyzing word frequency. It is also the standard example for distributed data processing.
 
-### Example 
+The process typically involves reading the input text, splitting it into words, and counting how many times each word appears.
 
-Input text:
-``
-Big data means big opportunities with big challenges.
-``
+### Example Case
+* **Input Text:** `"Big data means big opportunities with big challenges."`
+* **Expected Output:**
+  ```text
+  big → 3
+  data → 1
+  means → 1
+  opportunities → 1
+  with → 1
+  challenges → 1
+  ```
 
-Result: 
-```
-big → 3
-data → 1
-means → 1
-opportunities → 1
-with → 1
-challenges → 1
-```
+### Provided Implementations
+Please test and review the following implementations inside the project:
 
-### Code
+| File Path | Description |
+| :--- | :--- |
+| `notebooks/word_count.ipynb` | Interactive Jupyter Notebook containing the sequential Python implementation, the low-level **Spark RDD API**, and the high-level **Spark SQL/DataFrame API**. |
 
-You have three implementations to test and understand:
+---
 
-* word_count/sequential_word_count.py: Sequential Python implementation
-* word_count/rdd_word_count.py: PySpark implementation with the base RDD API.
-* word_count/sql_word_count.py: PySpark implementation with the SQL API.
-* word_count/word_count.ipynb: Jupyter notebook with the code of the three versions.
+## 💻 Work To Do
 
-## Work To Do
+Analyze the code on the `notebooks/flights.ipynb` Jupyter notebook. Implement functions to compute:
+* 📊 **The number of flights per route**
+* 🏆 **The route with the highest number of flights**
+* ⏱️ **The average duration of flights per route**
 
-Analyze the code on the _flights/flights_ Jupyter notebook.
-Implement functions to compute
-- The number of flights per route
-- The route with more flights
-- The average duration of flight per route
+---
 
-You may do it directly on the notebook or on dedicated script files, 
-and call them from  the notebook with command:
-```
-% run script
-```
+## 📚 Documentation
 
-## Documentation
-
-* Spark: https://spark.apache.org/docs/latest/
-* Spark RDD Programming Guide: https://spark.apache.org/docs/latest/rdd-programming-guide.html
-* Spark SQL Programming Guide: https://spark.apache.org/docs/latest/sql-programming-guide.html
-* A simple Spark Tutorial: https://www.tutorialspoint.com/spark_sql/index.htm
+* [Apache Spark Official Documentation](https://apache.org)
+* [Spark RDD Programming Guide](https://apache.orgrdd-programming-guide.html)
+* [Spark SQL Programming Guide](https://apache.orgsql-programming-guide.html)
+* [TutorialsPoint: Spark SQL Tutorial](https://tutorialspoint.com)
